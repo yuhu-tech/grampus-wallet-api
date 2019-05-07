@@ -1,12 +1,12 @@
 ## Grampus wallet App API documnet
 
-==`url: http://139.226.50.54:18080/query`==
+`url: http://139.226.50.54:18080/query`
 
-==`method: POST`==
+`method: POST`
 
-==`body: 请求json字符串`==
+`body: 请求json字符串`
 
-==`header: 设置用户tocken`==
+`header: 设置用户tocken`
 
 ### 1.快速登录 M1-2
 - API
