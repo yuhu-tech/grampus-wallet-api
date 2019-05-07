@@ -6,7 +6,7 @@
 
 `body: 请求json字符串`
 
-`header: 设置用户tocken`
+`auth: 设置用户tocken`
 
 ### 1.快速登录 M1-2
 - API
