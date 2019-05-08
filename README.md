@@ -17,7 +17,7 @@ mutation->signupOrLogin
 ```
 - ***Parameter***
 
-```json
+```text
 {
   token: "用户tocken",
   refreshToken: "更新token",
@@ -77,7 +77,7 @@ mutation->signupOrLogin
 
   - body 
 
-  ```json
+  ```text
   mutation{
       signupOrLogin(phoneNumber: "17740657205", verificationCode: "1234", inviteCode: "") {
         token
