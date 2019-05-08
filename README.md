@@ -484,6 +484,11 @@ query->messages
   ```
 - ***Http***
 
+  - parameter
+    ```text
+    limit: 查询条数, skip: 从第几条开始查
+    ```
+
   - body
     ```text
     {"query":"query{\n  messages(limit: 10, skip: 0) {\n    id\n    toUser\n    sendAt\n    checkedAt\n    checkStatus\n    messageContent{\n      id\n      createdAt\n      fromUser\n      toUser\n      content\n    }\n  }\n}","variables":null}
@@ -558,13 +563,7 @@ query->message
   - body 
 
   ```text
-  {"query":"query{\n  message(id: \"cjveo63w2006p078073k9up6j\") {\n    id\n    toUser\n    sendAt\n    checkedAt\n    checkStatus\n    messageContent{\n      id\n      createdAt\n      fromUser\n      toUser\n      content\n    }\n  }\n}","variables":null}
-  ```
-- ***Http***
-
-  - body
-    ```text
-    query{
+   query{
       message(id: "cjveo63w2006p078073k9up6j") {
         id
         toUser
@@ -580,6 +579,17 @@ query->message
         }
       }
     }
+  ```
+- ***Http***
+
+  - parameter
+    ```text
+    id: messageID
+    ```
+
+  - body
+    ```text
+    {"query":"query{\n  message(id: \"cjveo63w2006p078073k9up6j\") {\n    id\n    toUser\n    sendAt\n    checkedAt\n    checkStatus\n    messageContent{\n      id\n      createdAt\n      fromUser\n      toUser\n      content\n    }\n  }\n}","variables":null}
     ```
     
   - response
@@ -675,6 +685,11 @@ query->assets
     }
   ```
 - ***Http***
+
+  - parameter
+    ```text
+    id: assetsID
+    ```
 
   - body
     ```text
@@ -871,7 +886,7 @@ mutation->signupOrLogin
   - body 
 
   ```text
-  mutation{
+    mutation{
       signupOrLogin(phoneNumber: "17740657205", verificationCode: "1234", inviteCode: "") {
         token
         refreshToken
