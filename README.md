@@ -15,7 +15,7 @@
 ```text
 mutation->signupOrLogin
 ```
-- ***Parameter***
+- ***Describe***
 
 ```text
 {
