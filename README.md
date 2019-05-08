@@ -645,26 +645,59 @@ query->assets
 - ***Describe***
 
 ```text
-
+  assetses: {
+    id: "",
+    createdAt: "创建时间",
+    publishAddress: "发布地址",
+    assetsName: "资产名",
+    assetsSymbol: "资产符号",
+    decimals: "小数位数",
+    totalSupply: "总发送量",
+    publishStatus: "发送状态",
+  }
 ```
 - ***Graphql***
 
   - body 
 
   ```text
-  
+   {
+      assets(id: "cjveo5ern00620780iw0qx65k") {
+        id
+        createdAt
+        publishAddress
+        assetsName
+        assetsSymbol
+        decimals
+        totalSupply
+        publishStatus
+      }
+    }
   ```
 - ***Http***
 
   - body
     ```text
-    
+    {"query":"{\n  assets(id: \"cjveo5ern00620780iw0qx65k\") {\n    id\n    createdAt\n    publishAddress\n    assetsName\n    assetsSymbol\n    decimals\n    totalSupply\n    publishStatus\n  }\n}","variables":null,"operationName":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "data": {
+        "assets": {
+          "id": "cjveo5ern00620780iw0qx65k",
+          "createdAt": "2019-05-08T03:34:19.906Z",
+          "publishAddress": "0x6c2b65c525814c68bf26a566b69d56237072d0e0",
+          "assetsName": "KCLD",
+          "assetsSymbol": "CLD",
+          "decimals": 2,
+          "totalSupply": "1000000",
+          "publishStatus": 1
+        }
+      }
+    }
     ```
 
 ###  M1-1.获取验证码
