@@ -117,7 +117,8 @@ mutation->signupOrLogin
     ```text
     {"query":"mutation{\n  signupOrLogin(phoneNumber: \"17740657205\", verificationCode: \"1234\", inviteCode: \"\") {\n    token\n    refreshToken\n    expiredDate\n    user{\n      id\n      createdAt\n      phoneNumber\n      InviterUserID\n      CountOfInvitees\n      addresses {\n        id\n      }\n      contacts {\n        id\n      }\n      certificationStatus {\n        id\n      }\n      certificationRewards {\n        id\n      }\n      invitionRewards {\n        id\n      }\n      assetses {\n        id\n      }\n    }\n  }\n}","variables":null}
     ```
-- ***Response***
+    
+  - response
 
     ```json
     {
