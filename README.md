@@ -6,7 +6,7 @@
 
 `body: 请求json字符串`
 
-`authorization: 用户授权操作，token`
+`authorization: 用户授权操作，需传token`
 
 ### 1.快速登录 M1-2
 
