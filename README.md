@@ -1,6 +1,6 @@
 ## Grampus wallet App API documnet
 
-`url: http://139.226.50.54:18080/query`
+`url: http://119.3.43.136:8080/query`
 
 `method: POST`
 
@@ -1009,26 +1009,49 @@ mutation->addAddress
 - ***Describe***
 
 ```text
-
+addAddress{
+    id: ""
+    addressString: "添加鲸卡地址",
+    nickname: "添加鲸卡昵称"
+}
 ```
 - ***Graphql***
 
   - body 
 
   ```text
-  
+    mutation{
+      addAddress(address: "0xdnjskjndksmkd", nickname: "dhshb") {
+        id
+        addressString
+        nickname
+      }
+    }
   ```
 - ***Http***
 
+  - parameter
+    ```text
+    address: 地址, nickname: 昵称
+    ```
+
   - body
     ```text
-    
+    {"query":"mutation{\n  addAddress(address: \"0xdnjskjndksmkd\", nickname: \"dhshb\") {\n    id\n    addressString\n    nickname\n  }\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "data": {
+        "addAddress": {
+          "id": "cjvg2ghba00jq0714t3zr6luq",
+          "addressString": "0xdnjskjndksmkd",
+          "nickname": "dhshb"
+        }
+      }
+    }
     ```
 ###  M1-5.修改鲸卡昵称
 
@@ -1040,26 +1063,49 @@ mutation->updateAddressNickname
 - ***Describe***
 
 ```text
-
+addAddress{
+    id: ""
+    addressString: "添加鲸卡地址",
+    nickname: "添加鲸卡昵称"
+}
 ```
 - ***Graphql***
+
+- parameter
+    ```text
+    id: 地址id, nickname: 昵称
+    ```
 
   - body 
 
   ```text
-  
+    mutation{
+      updateAddressNickname(id: "cjvg2ktv700k40714qdns6al7", nickname: "sad") {
+        id
+        addressString
+        nickname
+      }
+    }
   ```
 - ***Http***
 
   - body
     ```text
-    
+    {"query":"mutation{\n  updateAddressNickname(id: \"cjvg2ktv700k40714qdns6al7\", nickname: \"sad\") {\n    id\n    addressString\n    nickname\n  }\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "data": {
+        "updateAddressNickname": {
+          "id": "cjvg2ktv700k40714qdns6al7",
+          "addressString": "0xdnjskjndksmkd",
+          "nickname": "sad"
+        }
+      }
+    }
     ```
 ###  M1-6.删除鲸卡
 
@@ -1078,19 +1124,29 @@ mutation->deleteAddress
   - body 
 
   ```text
-  
+    mutation{
+      deleteAddress(id: "cjvg3a2hg00m00714etpxw3an") {
+        id
+      }
+    }
   ```
 - ***Http***
 
   - body
     ```text
-    
+    {"query":"mutation{\n  deleteAddress(id: \"cjvg3a2hg00m00714etpxw3an\") {\n    id\n  }\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "data": {
+        "deleteAddress": {
+          "id": "cjvg3a2hg00m00714etpxw3an"
+        }
+      }
+    }
     ```
 ###  M1-7.添加通讯录名单
 
@@ -1102,26 +1158,44 @@ mutation->addContacter
 - ***Describe***
 
 ```text
-
+addContacter{
+    id: ""
+    addressString: "通讯录地址",
+    nickname: "通讯录昵称"
+}
 ```
 - ***Graphql***
 
   - body 
 
   ```text
-  
+    mutation{
+      addContacter(contacterAddress: "0xsahsja", nickname: "dsd") {
+        id
+        addressString
+        nickname
+      }
+    }
   ```
 - ***Http***
 
   - body
     ```text
-    
+    {"query":"mutation{\n  addContacter(contacterAddress: \"0xsahsja\", nickname: \"dsd\") {\n    id\n    addressString\n    nickname\n  }\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "data": {
+        "addContacter": {
+          "id": "cjvg2sb9s00kr0714ohujdaqs",
+          "addressString": "0xsahsja",
+          "nickname": "dsd"
+        }
+      }
+    }
     ```
 ###  M1-8.更新通讯录名单
 
@@ -1133,26 +1207,49 @@ mutation->updateContacter
 - ***Describe***
 
 ```text
-
+addContacter{
+    id: ""
+    addressString: "通讯录地址",
+    nickname: "通讯录昵称"
+}
 ```
 - ***Graphql***
 
   - body 
 
   ```text
-  
+    mutation{
+      updateContacter(id: "cjvg2ulgi00ky07144imnt2r2", contacterAddress: "0xsds", nickname: "sddss") {
+        id
+        addressString
+        nickname
+      }
+    }
   ```
 - ***Http***
 
+  - parameter
+    ```text
+    id: 地址id, nickname: 昵称, contacterAddress: 通讯录地址
+    ```
+
   - body
     ```text
-    
+    {"query":"mutation{\n  updateContacter(id: \"cjvg2ulgi00ky07144imnt2r2\", contacterAddress: \"0xsds\", nickname: \"sddss\") {\n    id\n    addressString\n    nickname\n  }\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "data": {
+        "updateContacter": {
+          "id": "cjvg2ulgi00ky07144imnt2r2",
+          "addressString": "0xsds",
+          "nickname": "sddss"
+        }
+      }
+    }
     ```
 ###  M1-9.删除通讯录名单
 
@@ -1171,19 +1268,34 @@ mutation->deleteContacter
   - body 
 
   ```text
-  
+    mutation{
+      deleteContacter(id: "cjvg2ulgi00ky07144imnt2r2") {
+        id
+      }
+    }
   ```
 - ***Http***
 
+  - parameter
+    ```text
+    id: 删除id
+    ```
+
   - body
     ```text
-    
+    {"query":"mutation{\n  deleteContacter(id: \"cjvg2ulgi00ky07144imnt2r2\") {\n    id\n  }\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "data": {
+        "deleteContacter": {
+          "id": "cjvg2ulgi00ky07144imnt2r2"
+        }
+      }
+    }
     ```
 ###  M1-10.个人实名认证
 
