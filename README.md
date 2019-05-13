@@ -763,121 +763,6 @@ mutation->signupOrLogin
     token: "token",
     refreshToken: "更新token",
     expiredDate: "到期时间",
-    user: {
-      id: "",
-      createdAt: "创建时间",
-      phoneNumber: "电话号码",
-      InviterUserID: "邀请人id",
-      CountOfInvitees: "邀请用户数量",
-      addresses: {
-        id: "",
-        addressString: "用户地址",
-        nickname: "昵称"
-      },
-      contacts: {
-        id: "",
-        addressString: "联系人地址",
-        nickname: "昵称"
-      },
-      certificationStatus: {
-        id: "",
-        createdAt: "创建时间",
-        certType: "证件类型",
-        certStatus: "认证状态",
-        expiredAt: "失效时间",
-        submitAt: "提交时间",
-        auditAt: "审核时间",
-        submitMark: "提交备注",
-        auditMark: "审核备注",
-        personalCertificationInfo: {
-          id: "",
-          email: "认证邮箱",
-          img1URL: "身份证背面图片url",
-          img2URL: "身份证正面图片url",
-          identityCardInfo: {
-            id: "",
-            clientIDNo: "身份证号",
-            name: "姓名",
-            sex: "性别",
-            ethnicity: "民族",
-            birth: "出生日期",
-            residentialAddress: "居住地",
-            authority: "",
-            issueDate: "签发日期",
-            invalidDate: "无效日期"
-          }
-        },
-        companyCertificationInfo: {
-          id: "",
-          contacter: "联系人",
-          phoneNumberOfContacter: "联系人手机号",
-          email: "认证邮箱",
-          additionalAuthentication: "附加认证",
-          accountName: "银行开户名",
-          corporateAccountOfDepositBank: "对公账户开户行",
-          corporateAccountNo: "对公账户账号",
-          img1URL: "营业执照图片url",
-          img2URL: "身份证背面图片url",
-          img3URL: "身份证正面图片url",
-          identityCardInfo: {
-            id: "",
-            clientIDNo: "身份证号",
-            name: "姓名",
-            sex: "性别",
-            ethnicity: "民族",
-            birth: "出生日期",
-            residentialAddress: "居住地",
-            authority: "",
-            issueDate: "签发日期",
-            invalidDate: "无效日期"
-          },
-          bussinessLicenseInfo: {
-            id: "",
-            registrationNo: "证件编号",
-            unifiedSocialCreditCode: "统一社会信用代码",
-            enterpriseName: "名称",
-            typeOfEnterprise: "类型",
-            residence: "住所",
-            legalRepresentative: "法定代表人",
-            registeredCapital: "注册资本",
-            dateOfEstablishment: "成立日期",
-            termOfBusiness: "营业期限",
-            scopeOfBusiness: "经营范围"
-          }
-        }
-      },
-      certificationRewards: {
-        id: "",
-        createdAt: "创建时间",
-        toAddress: "发送奖励地址",
-        receivedAt: "接收奖励地址",
-        expiredAt: "到期时间",
-        txHash: "交易hash",
-        rewardStatus: "奖励状态",
-        rewardContent: "奖励内容",
-      },
-      invitionRewards: {
-        id: "",
-        createdAt: "创建时间",
-        toAddress: "发送奖励地址",
-        receivedAt: "接受奖励地址",
-        expiredAt: "到期时间",
-        txHash: "交易hash",
-        inviteeUserID: "受邀者",
-        rewardStatus: "奖励状态",
-        rewardContent: "奖励内容"
-      },
-      assetses: {
-        id: "",
-        createdAt: "创建时间",
-        publishAddress: "发布地址",
-        assetsName: "资产名",
-        assetsSymbol: "资产符号",
-        decimals: "小数位数",
-        totalSupply: "总发送量",
-        publishStatus: "发送状态",
-      }
-    }
   }
 }
 ```
@@ -891,31 +776,6 @@ mutation->signupOrLogin
         token
         refreshToken
         expiredDate
-        user{
-          id
-          createdAt
-          phoneNumber
-          InviterUserID
-          CountOfInvitees
-          addresses {
-            id
-          }
-          contacts {
-            id
-          }
-          certificationStatus {
-            id
-          }
-          certificationRewards {
-            id
-          }
-          invitionRewards {
-            id
-          }
-          assetses {
-            id
-          }
-        }
       }
     }
   ```
@@ -923,7 +783,7 @@ mutation->signupOrLogin
 
   - body
     ```text
-    {"query":"mutation{\n  signupOrLogin(phoneNumber: \"17740657205\", verificationCode: \"1234\", inviteCode: \"\") {\n    token\n    refreshToken\n    expiredDate\n    user{\n      id\n      createdAt\n      phoneNumber\n      InviterUserID\n      CountOfInvitees\n      addresses {\n        id\n      }\n      contacts {\n        id\n      }\n      certificationStatus {\n        id\n      }\n      certificationRewards {\n        id\n      }\n      invitionRewards {\n        id\n      }\n      assetses {\n        id\n      }\n    }\n  }\n}","variables":null}
+    {"query":"mutation{\n  signupOrLogin(phoneNumber: \"18721341306\", verificationCode: \"1234\", inviteCode: \"\") {\n    token\n    refreshToken\n    expiredDate\n  }\n}","variables":null}
     ```
     
   - response
@@ -932,38 +792,9 @@ mutation->signupOrLogin
     {
       "data": {
         "signupOrLogin": {
-          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmVhdGVkX2F0IjoiMjAxOS0wNS0wN1QwNzo0NDo1OS44OThaIiwiZXhwIjoxNTU3MzIzMzU0LCJpZCI6IlkycDJaR2h1ZURFMk1EQTBjekEzTWpCcU9UTmlPV1JsYWc9PSIsImlzcyI6ImdyYW1wdXMtYXNzZXRzLWJhY2tlbmQifQ.3UD5wKDokCSriaiO1SzBvAg0D9fPA6i2HbQvcxyfdkQ",
-          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmVhdGVkX2F0IjoiMjAxOS0wNS0wN1QwNzo0NDo1OS44OThaIiwiZXhwIjoxNTU4MDgzMzU0LCJpZCI6IlkycDJaR2h1ZURFMk1EQTBjekEzTWpCcU9UTmlPV1JsYWc9PSIsImlzcyI6ImdyYW1wdXMtYXNzZXRzLWJhY2tlbmQiLCJvbmx5X3JlZnJlc2giOiJ0cnVlIn0.0RStN9JfU-mjO07JC2eQiCm4pfHgQ2YYGlCSa-e04Yk",
-          "expiredDate": "1557323354",
-          "user": {
-            "id": "cjvdhaqet000u0720ngvvutjr",
-            "createdAt": "2019-05-07T07:34:44.744Z",
-            "phoneNumber": "18721341306",
-            "InviterUserID": "cjvdhiixx002e0720dyrflk1x",
-            "CountOfInvitees": 3,
-            "addresses": [
-              {
-                "id": "cjvdhl3os00330720by3dn5ei"
-              },
-              {
-                "id": "cjvdhlfjz003e07202hs5dfce"
-              }
-            ],
-            "contacts": [
-              {
-                "id": "cjvdhls2o003q0720daor9jp6"
-              },
-              {
-                "id": "cjvdhm1x900410720umbglhs2"
-              }
-            ],
-            "certificationStatus": {
-              "id": "cjvdhnokf004i0720eaqxrev8"
-            },
-            "certificationRewards": null,
-            "invitionRewards": null,
-            "assetses": []
-          }
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmVhdGVkX2F0IjoiMjAxOS0wNS0xM1QwMzowMTowMC44NTBaIiwiZXhwIjoxNTk3NzI2NjMwLCJpZCI6IlkycDJiSE0xZEcxeE1EQXhZakEzT1RGbmEyUnJkV04yY1E9PSIsImlzcyI6ImdyYW1wdXMtYXNzZXRzLWJhY2tlbmQifQ.EnMRmquCtmkot6_3Cqe3RycD56IJuqajCBdJGyzmc60",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmVhdGVkX2F0IjoiMjAxOS0wNS0xM1QwMzowMTowMC44NTBaIiwiZXhwIjoyMzU3NzI2NjMwLCJpZCI6IlkycDJiSE0xZEcxeE1EQXhZakEzT1RGbmEyUnJkV04yY1E9PSIsImlzcyI6ImdyYW1wdXMtYXNzZXRzLWJhY2tlbmQiLCJvbmx5X3JlZnJlc2giOiJ0cnVlIn0.9BnQkz9piel1KECchlCtfKtZq0-T9vgJ2TvyBhmkp9Y",
+          "expiredDate": "1597726630"
         }
       }
     }
