@@ -389,19 +389,47 @@ query->tradingRecords
   - body 
 
   ```text
-  
+    query{
+      tradingRecords(tradingAddress: "0x14ca04ff85747ccfc4387866db84cc24e4643b", contractAddress: "0x619f889c5699394b9c5033bc85028eb4af11faa1", limit: 10, skip: 0){
+        createdAt
+        txHash
+        blockNumber
+        tradingType
+        gas
+        erc20{
+          address
+          name
+          decimals
+          symbol
+          totalSupply
+          blockNumber
+        }
+        amount
+        from
+        to
+        tradingStatus
+        comment
+      }
+    }
   ```
 - ***Http***
 
+  - parameter
+  `tradingAddress: 交易地址，contractAddress：合约地址，limit： 分页条数， skip：从第几条开始`
+
   - body
     ```text
-    
+    {"query":"query{\n  tradingRecords(tradingAddress: \"0x14ca04ff85747ccfc4387866db84cc24e4643b\", contractAddress: \"0x619f889c5699394b9c5033bc85028eb4af11faa1\", limit: 10, skip: 0){\n    createdAt\n    txHash\n    blockNumber\n    tradingType\n    gas\n    erc20{\n      address\n      name\n      decimals\n      symbol\n      totalSupply\n      blockNumber\n    }\n    amount\n    from\n    to\n    tradingStatus\n    comment\n  }\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "data": {
+        "tradingRecords": null
+      }
+    }
     ```
 ###  Q1-9.查询某条交易记录
 
@@ -631,19 +659,40 @@ query->erc20s
   - body 
 
   ```text
-  
+    query{
+      erc20s{
+        address
+        blockNumber
+        name
+        totalSupply
+        decimals
+        symbol
+      }
+    }
   ```
 - ***Http***
 
   - body
     ```text
-    
+    {"query":"query{\n  erc20s{\n    address\n    blockNumber\n    name\n    totalSupply\n    decimals\n    symbol\n  }\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "errors": [
+        {
+          "message": "Field \"erc20s\" argument \"key\" of type \"String!\" is required but not provided.",
+          "locations": [
+            {
+              "line": 2,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
     ```
 ###  Q1-16.查询某条发布的资产
 
@@ -732,19 +781,26 @@ mutation->sendVerificationCode
   - body 
 
   ```text
-  
+    mutation{
+      sendVerificationCode(phoneNumber: "17740657205") { 
+      }
+    }
   ```
 - ***Http***
 
   - body
     ```text
-    
+    {"query":"mutation{\n  sendVerificationCode(phoneNumber: \"17740657205\") { \n  }\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "data": {
+        "sendVerificationCode": true
+      }
+    }
     ```
 
 
@@ -816,19 +872,33 @@ mutation->refreshToken
   - body 
 
   ```text
-  
+  mutation{
+     refreshToken(refreshToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmVhdGVkX2F0IjoiMjAxOS0wNS0wOFQwMzoyNzoyMC44NzhaIiwiZXhwIjoxNTU4NjAzMTg4LCJpZCI6IlkycDJaVzUzWm1kbU1EQXhOekEzT0RCcWFEUTRPV1p5Wnc9PSIsImlzcyI6ImdyYW1wdXMtYXNzZXRzLWJhY2tlbmQiLCJvbmx5X3JlZnJlc2giOiJ0cnVlIn0.R0zC7IgHNw9UPZYpkjzHEyrekRlB1cO602tvKZppbjY") {
+      token
+      expiredDate
+      refreshToken
+    }
+  }
   ```
 - ***Http***
 
   - body
     ```text
-    
+    {"query":"mutation{\n refreshToken(refreshToken: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmVhdGVkX2F0IjoiMjAxOS0wNS0wOFQwMzoyNzoyMC44NzhaIiwiZXhwIjoxNTU4NjAzMTg4LCJpZCI6IlkycDJaVzUzWm1kbU1EQXhOekEzT0RCcWFEUTRPV1p5Wnc9PSIsImlzcyI6ImdyYW1wdXMtYXNzZXRzLWJhY2tlbmQiLCJvbmx5X3JlZnJlc2giOiJ0cnVlIn0.R0zC7IgHNw9UPZYpkjzHEyrekRlB1cO602tvKZppbjY\") {\n  token\n  expiredDate\n  refreshToken\n}\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "data": {
+        "refreshToken": {
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmVhdGVkX2F0IjoiIiwiZXhwIjoxNTU3ODQzMjE1LCJpZCI6IlkycDJaVzUzWm1kbU1EQXhOekEzT0RCcWFEUTRPV1p5Wnc9PSIsImlzcyI6ImdyYW1wdXMtYXNzZXRzLWJhY2tlbmQifQ.jctSRXp9jZwNBJeo3MiqgPV4DKi8iHAKSfTSVuxpTtU",
+          "expiredDate": "1557843215",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmVhdGVkX2F0IjoiIiwiZXhwIjoxNTU4NjAzMjE1LCJpZCI6IlkycDJaVzUzWm1kbU1EQXhOekEzT0RCcWFEUTRPV1p5Wnc9PSIsImlzcyI6ImdyYW1wdXMtYXNzZXRzLWJhY2tlbmQiLCJvbmx5X3JlZnJlc2giOiJ0cnVlIn0.Ct-DcEYirLBNNy6GXrdvvzyHAiCtCTpl2HXJxjDFLD8"
+        }
+      }
+    }
     ```
 ###  M1-4.添加鲸卡
 
@@ -852,11 +922,19 @@ addAddress{
 
   ```text
     mutation{
-      addAddress(address: "0xdnjskjndksmkd", nickname: "dhshb") {
-        id
-        addressString
-        nickname
+     addAddress(address: "0x14ca04ff85747def87d6c6c566db84cc24e4643b", nickname: "JK新卡") {
+      id
+      addressString
+      nickname
+      erc20s {
+        address
+        blockNumber
+        name
+        totalSupply
+        decimals
+        symbol
       }
+     } 
     }
   ```
 - ***Http***
@@ -868,18 +946,28 @@ addAddress{
 
   - body
     ```text
-    {"query":"mutation{\n  addAddress(address: \"0xdnjskjndksmkd\", nickname: \"dhshb\") {\n    id\n    addressString\n    nickname\n  }\n}","variables":null}
+    {"query":"mutation{\n addAddress(address: \"0x14ca04ff85747def87d6c6c566db84cc24e4643b\", nickname: \"JK新卡\") {\n  id\n  addressString\n  nickname\n  erc20s {\n    address\n    blockNumber\n    name\n    totalSupply\n    decimals\n    symbol\n  }\n } \n}","variables":null}
     ```
     
   - response
 
     ```json
     {
+      "errors": [
+        {
+          "message": "graphql: panic occurred: not implemented",
+          "path": [
+            "addAddress",
+            "erc20s"
+          ]
+        }
+      ],
       "data": {
         "addAddress": {
-          "id": "cjvg2ghba00jq0714t3zr6luq",
-          "addressString": "0xdnjskjndksmkd",
-          "nickname": "dhshb"
+          "id": "cjvn7n8im00kk0714698tqcv5",
+          "addressString": "0x14ca04ff85747def87d6c6c566db84cc24e4643b",
+          "nickname": "JK新卡",
+          "erc20s": null
         }
       }
     }
@@ -1145,19 +1233,40 @@ mutation->personalCertificate
   - body 
 
   ```text
-  
+    mutation {
+      personalCertificate(name: "陈朋涛", clientIDNo: "532101198906010015", identityCardFrontInfoID: "cjvnc9wqj00ot07147u5odppf", identityCardBackInfoID: "cjvnckwlq00oy0714lpdqivqy") {
+        id
+        name
+        clientIDNo
+        idCardBackImgURL
+        idCardFrontImgURL
+      }
+    }
+
   ```
 - ***Http***
 
   - body
     ```text
-    
+    {"query":"mutation {\n  personalCertificate(name: \"陈朋涛\", clientIDNo: \"532101198906010015\", identityCardFrontInfoID: \"cjvnc9wqj00ot07147u5odppf\", identityCardBackInfoID: \"cjvnckwlq00oy0714lpdqivqy\") {\n    id\n    name\n    clientIDNo\n    idCardBackImgURL\n    idCardFrontImgURL\n  }\n}\n","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "errors": [
+        {
+          "message": "graphql: panic occurred: runtime error: invalid memory address or nil pointer dereference",
+          "path": [
+            "personalCertificate"
+          ]
+        }
+      ],
+      "data": {
+        "personalCertificate": null
+      }
+    }
     ```
 ###  M1-11.企业实名认证
 
@@ -1238,19 +1347,35 @@ mutation->prepareTrading
   - body 
 
   ```text
-  
+    mutation{
+      prepareTrading(txid: "sss") {
+        
+      }
+    }
   ```
 - ***Http***
 
   - body
     ```text
-    
+    {"query":"mutation{\n  prepareTrading(txid: \"sss\") {\n    \n  }\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "errors": [
+        {
+          "message": "graphql: panic occurred: not implemented",
+          "path": [
+            "prepareTrading"
+          ]
+        }
+      ],
+      "data": {
+        "prepareTrading": null
+      }
+    }
     ```
 ###  M1-14.发布资产
 
@@ -1328,22 +1453,32 @@ mutation->checkMessage
 ```
 - ***Graphql***
 
+  - paramter
+  `全部已读，不传参数，只读某一条传id`
+
   - body 
 
   ```text
-  
+    mutation{
+      checkMessage() {
+    	}
+    }
   ```
 - ***Http***
 
   - body
     ```text
-    
+    {"query":"mutation{\n  checkMessage() {\n\t}\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "data": {
+        "checkMessage": 0
+      }
+    }
     ```
 ###  M1-17.领取认证奖励
 
@@ -1362,19 +1497,35 @@ mutation->receiveCertificationReward
   - body 
 
   ```text
-  
+  mutation{
+  receiveCertificationReward(toAddress: "0x14ca04ff85747def87d6c6c566db84cc24e4643b") {
+    
+      }
+    }
   ```
 - ***Http***
 
   - body
     ```text
-    
+    {"query":"mutation{\n  receiveCertificationReward(toAddress: \"0x14ca04ff85747def87d6c6c566db84cc24e4643b\") {\n    \n  }\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "errors": [
+        {
+          "message": "graphql: panic occurred: not implemented",
+          "path": [
+            "receiveCertificationReward"
+          ]
+        }
+      ],
+      "data": {
+        "receiveCertificationReward": null
+      }
+    }
     ```
 ###  M1-18.领取邀请奖励
 
@@ -1393,19 +1544,35 @@ mutation->receiveInvitionReward
   - body 
 
   ```text
-  
+    mutation{
+      receiveInvitionReward(toAddress: "0x14ca04ff85747def87d6c6c566db84cc24e4643b") {
+        
+      }
+    }
   ```
 - ***Http***
 
   - body
     ```text
-    
+    {"query":"mutation{\n  receiveInvitionReward(toAddress: \"0x14ca04ff85747def87d6c6c566db84cc24e4643b\") {\n    \n  }\n}","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "errors": [
+        {
+          "message": "graphql: panic occurred: not implemented",
+          "path": [
+            "receiveInvitionReward"
+          ]
+        }
+      ],
+      "data": {
+        "receiveInvitionReward": null
+      }
+    }
     ```
 ###  M1-20.身份证识别背面信息
 
@@ -1424,19 +1591,37 @@ mutation->resolveBackOfIdentityCard
   - body 
 
   ```text
-  
+    mutation {
+      resolveBackOfIdentityCard(img: "img_base64") {
+        id
+        imgURL
+        authority
+        issueDate
+        invalidDate
+      }
+    }
   ```
 - ***Http***
 
   - body
     ```text
-    
+    {"query":"mutation {\n  resolveBackOfIdentityCard(img: \"img_base64\") {\n    id\n    imgURL\n    authority\n    issueDate\n    invalidDate\n  }\n}\n","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "data": {
+        "resolveBackOfIdentityCard": {
+          "id": "cjvnckwlq00oy0714lpdqivqy",
+          "imgURL": null,
+          "authority": "成都市公安局龙泉驿区分局",
+          "issueDate": "20110922",
+          "invalidDate": "20310922"
+        }
+      }
+    }
     ```
 ###  M1-21.身份证识别正面信息
 
@@ -1455,19 +1640,46 @@ mutation->resolveFrontOfIdentityCard
   - body 
 
   ```text
-  
+    mutation {
+      resolveFrontOfIdentityCard(img: "img_base64") {
+        id
+        imgURL
+      	clientIDNo
+      	ethnicity
+      	birth
+      	residentialAddress
+      	sex
+      	name
+      }
+    }
   ```
 - ***Http***
 
+  - paramter
+  `img: base64(不要"data:image/jpeg;base64,"这一段)`
+
   - body
     ```text
-    
+    {"query":"mutation {\n  resolveFrontOfIdentityCard(img: \"img_base64\") {\n    id\n    imgURL\n  \tclientIDNo\n  \tethnicity\n  \tbirth\n  \tresidentialAddress\n  \tsex\n  \tname\n  }\n}\n","variables":null}
     ```
     
   - response
 
     ```json
-    
+    {
+      "data": {
+        "resolveFrontOfIdentityCard": {
+          "id": "cjvnc9wqj00ot07147u5odppf",
+          "imgURL": null,
+          "clientIDNo": "532101198906010015",
+          "ethnicity": "汉",
+          "birth": "19890601",
+          "residentialAddress": "山东省滕州市龙阳镇",
+          "sex": "男",
+          "name": "陈朋涛"
+        }
+      }
+    }
     ```
 ###  M1-22.识别营业执照信息
 
@@ -1499,4 +1711,275 @@ mutation->resolveBussinessLicense
 
     ```json
     
+    ```
+###  P1-1.获取鲸卡信息
+
+- ***API***
+
+```text
+query->Q1-1->S2-6
+```
+- ***Describe***
+
+```text
+
+```
+- ***Graphql***
+
+  - body 
+
+  ```text
+    query{
+      user{
+        addresses{
+          id
+          addressString
+          nickname
+        }
+      }
+    }
+  ```
+- ***Http***
+
+  - body
+    ```text
+    {"query":"{\n  user {\n    addresses {\n      id\n      addressString\n      nickname\n    }\n  }\n}\n","variables":null,"operationName":null}
+    ```
+    
+  - response
+
+    ```json
+    {
+      "data": {
+        "user": {
+          "addresses": [
+            {
+              "id": "cjvenwz0i001t0780x1kyh1qc",
+              "addressString": "0x349118dd4764b6335055582949a24a1d76ddad15",
+              "nickname": "鲸卡2"
+            },
+            {
+              "id": "cjvf0h9rt00ei0714g157pxlk",
+              "addressString": "0x14ca04ff85747ccf87d6c6c566db84cc24e4643b",
+              "nickname": "鲸卡3"
+            },
+            {
+              "id": "cjvg2ghba00jq0714t3zr6luq",
+              "addressString": "0xdnjskjndksmkd",
+              "nickname": "dhshb"
+            },
+            {
+              "id": "cjvg2hvul00jx0714tno01u0b",
+              "addressString": "0xdnjskjndksmkd",
+              "nickname": "dhshb"
+            },
+            {
+              "id": "cjvn7n8im00kk0714698tqcv5",
+              "addressString": "0x14ca04ff85747def87d6c6c566db84cc24e4643b",
+              "nickname": "JK新卡"
+            },
+            {
+              "id": "cjvn7pe5s00kr07147w54b8ph",
+              "addressString": "0x14ca04ff85747def87d6c6c566db84cc24e4643b",
+              "nickname": "JK新卡"
+            }
+          ]
+        }
+      }
+    }
+    ```
+
+###  P1-2.获取通讯录
+
+- ***API***
+
+```text
+query->Q1-1->S2-7
+```
+- ***Describe***
+
+```text
+
+```
+- ***Graphql***
+
+  - body 
+
+  ```text
+    query{
+      user{
+        contacts{
+          id
+          addressString
+          nickname
+        }
+      }
+    }
+  ```
+- ***Http***
+
+  - body
+    ```text
+    {"query":"query{\n  user{\n    contacts{\n      id\n      addressString\n      nickname\n    }\n  }\n}","variables":null}
+    ```
+    
+  - response
+
+    ```json
+    {
+      "data": {
+        "user": {
+          "contacts": [
+            {
+              "id": "cjvenxdld002g07802xry4w4a",
+              "addressString": "0x619f889c5699394b9c5033bc85028eb4af11faa1",
+              "nickname": "朋友2"
+            },
+            {
+              "id": "cjvf263qy00fd0714f4ron0yy",
+              "addressString": "0x14ca04ff85747ccfc4387866db84cc24e4643b",
+              "nickname": "好友4"
+            },
+            {
+              "id": "cjvg2sb9s00kr0714ohujdaqs",
+              "addressString": "0xsahsja",
+              "nickname": "dsd"
+            }
+          ]
+        }
+      }
+    }
+    ```
+
+###  P1-3.获取奖励次数
+
+- ***API***
+
+```text
+query->Q1-1->S2-9
+```
+- ***Describe***
+
+```text
+
+```
+- ***Graphql***
+
+  - body 
+
+  ```text
+    query{
+      user{
+        certificationRewards{
+          id
+        }
+      }
+    }
+  ```
+- ***Http***
+
+  - body
+    ```text
+    {"query":"query{\n  user{\n    certificationRewards{\n      id\n    }\n  }\n}","variables":null}
+    ```
+    
+  - response
+
+    ```json
+    {
+      "data": {
+        "user": {
+          "certificationRewards": []
+        }
+      }
+    }
+    ```
+
+###  P1-4.获取邀请好友个数
+
+- ***API***
+
+```text
+query->Q1-1->S2-5
+```
+- ***Describe***
+
+```text
+
+```
+- ***Graphql***
+
+  - body 
+
+  ```text
+    query{
+      user{
+        CountOfInvitees
+      }
+    }
+  ```
+- ***Http***
+
+  - body
+    ```text
+    {"query":"query{\n  user{\n    CountOfInvitees\n  }\n}","variables":null}
+    ```
+    
+  - response
+
+    ```json
+    {
+      "data": {
+        "user": {
+          "CountOfInvitees": 3
+        }
+      }
+    }
+    ```
+
+###  P1-5.当前累计奖励
+
+- ***API***
+
+```text
+query->Q1-1->S2-10
+```
+- ***Describe***
+
+```text
+
+```
+- ***Graphql***
+
+  - body 
+
+  ```text
+    query{
+      user{
+        certificationRewards{
+          id
+          rewardContent{
+            rewardPoint
+          }
+        }
+      }
+    }
+  ```
+- ***Http***
+
+  - body
+    ```text
+    {"query":"query{\n  user{\n    certificationRewards{\n      id\n      rewardContent{\n        rewardPoint\n      }\n    }\n  }\n}","variables":null}
+    ```
+    
+  - response
+
+    ```json
+    {
+      "data": {
+        "user": {
+          "certificationRewards": []
+        }
+      }
+    }
     ```
