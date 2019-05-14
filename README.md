@@ -926,14 +926,6 @@ addAddress{
       id
       addressString
       nickname
-      erc20s {
-        address
-        blockNumber
-        name
-        totalSupply
-        decimals
-        symbol
-      }
      } 
     }
   ```
@@ -946,28 +938,18 @@ addAddress{
 
   - body
     ```text
-    {"query":"mutation{\n addAddress(address: \"0x14ca04ff85747def87d6c6c566db84cc24e4643b\", nickname: \"JK新卡\") {\n  id\n  addressString\n  nickname\n  erc20s {\n    address\n    blockNumber\n    name\n    totalSupply\n    decimals\n    symbol\n  }\n } \n}","variables":null}
+    {"query":"mutation {\n  addAddress(address: \"0x14ca04ff85747def87d6c6c566db84cc24e4643b\", nickname: \"JK新卡\") {\n    id\n    addressString\n    nickname\n  }\n}\n","variables":null}
     ```
     
   - response
 
     ```json
     {
-      "errors": [
-        {
-          "message": "graphql: panic occurred: not implemented",
-          "path": [
-            "addAddress",
-            "erc20s"
-          ]
-        }
-      ],
       "data": {
         "addAddress": {
-          "id": "cjvn7n8im00kk0714698tqcv5",
+          "id": "cjvnlkb1q02000791y22thhe9",
           "addressString": "0x14ca04ff85747def87d6c6c566db84cc24e4643b",
-          "nickname": "JK新卡",
-          "erc20s": null
+          "nickname": "JK新卡"
         }
       }
     }
