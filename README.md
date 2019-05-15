@@ -1965,3 +1965,61 @@ query->Q1-1->S2-10
       }
     }
     ```
+
+###  P1-6.用户手机号，姓名，是否实名
+
+- ***API***
+
+```text
+query->Q1-1->S5-9
+```
+- ***Describe***
+
+```text
+
+```
+- ***Graphql***
+
+  - body 
+
+  ```text
+    query{
+      user{
+        phoneNumber
+        certificationStatuses{
+          personalCertificationInfo{
+            name
+          }
+          certType
+          certStatus
+        }
+      }
+    }
+  ```
+- ***Http***
+
+  - body
+    ```text
+    {"query":"query{\n  user{\n    phoneNumber\n    certificationStatuses{\n      personalCertificationInfo{\n        name\n      }\n      certType\n      certStatus\n    }\n  }\n}","variables":null}
+    ```
+    
+  - response
+
+    ```json
+    {
+        "data": {
+            "user": {
+                "phoneNumber": "18721341306",
+                "certificationStatuses": [
+                    {
+                        "personalCertificationInfo": {
+                            "name": null
+                        },
+                        "certType": 1,
+                        "certStatus": 1
+                    }
+                ]
+            }
+        }
+    }
+    ```
