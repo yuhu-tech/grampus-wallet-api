@@ -2010,32 +2010,54 @@ query->Q1-1->S5-9
           certStatus
         }
       }
+      messages{
+        id
+        checkStatus
+      }
     }
   ```
 - ***Http***
 
   - body
     ```text
-    {"query":"query{\n  user{\n    phoneNumber\n    certificationStatuses{\n      personalCertificationInfo{\n        name\n      }\n      certType\n      certStatus\n    }\n  }\n}","variables":null}
+    {"query":"query{\n  user{\n    phoneNumber\n    certificationStatuses{\n      personalCertificationInfo{\n        name\n      }\n      certType\n      certStatus\n    }\n  }\n  messages{\n    id\n    checkStatus\n  }\n}","variables":null}
     ```
     
   - response
 
     ```json
     {
-        "data": {
-            "user": {
-                "phoneNumber": "18721341306",
-                "certificationStatuses": [
-                    {
-                        "personalCertificationInfo": {
-                            "name": null
-                        },
-                        "certType": 1,
-                        "certStatus": 1
-                    }
-                ]
+      "data": {
+        "user": {
+          "phoneNumber": "18721341306",
+          "certificationStatuses": [
+            {
+              "personalCertificationInfo": {
+                "name": "张三"
+              },
+              "certType": 1,
+              "certStatus": 1
             }
-        }
+          ]
+        },
+        "messages": [
+          {
+            "id": "cjvltwrhh009e0791qim6w8yq",
+            "checkStatus": 0
+          },
+          {
+            "id": "cjvonjdvs02pa0791in8mvx7w",
+            "checkStatus": 0
+          },
+          {
+            "id": "cjvonjw3902pu0791h263ko9t",
+            "checkStatus": 1
+          },
+          {
+            "id": "cjvonk9ou02q70791zexf7kr4",
+            "checkStatus": 0
+          }
+        ]
+      }
     }
     ```
