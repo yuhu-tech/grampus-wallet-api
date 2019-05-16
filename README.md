@@ -372,7 +372,7 @@ query->checkTrading
     ```json
     
     ```
-###  Q1-8.查询交易记录
+###  Q1-8.查询交易记录(全部、单条)
 
 - ***API***
 
@@ -389,25 +389,18 @@ query->tradingRecords
   - body 
 
   ```text
-    query{
-      tradingRecords(tradingAddress: "0x14ca04ff85747ccfc4387866db84cc24e4643b", contractAddress: "0x619f889c5699394b9c5033bc85028eb4af11faa1", limit: 10, skip: 0){
-        createdAt
+    {
+      tradingRecords(tradingAddress: "0x349118dD4764b6335055582949a24A1d76DDad15", contractAddress: "0x349118dD4764b6335055582949a24A1d76DDad15", limit: 10, skip: 0) {
         txHash
+        createdAt
         blockNumber
         tradingType
-        gas
-        erc20{
-          address
-          name
-          decimals
-          symbol
-          totalSupply
-          blockNumber
-        }
+        tradingStatus
         amount
         from
         to
-        tradingStatus
+        contractAddress
+        contractSymbol
         comment
       }
     }
@@ -415,11 +408,11 @@ query->tradingRecords
 - ***Http***
 
   - parameter
-  `tradingAddress: 交易地址，contractAddress：合约地址，limit： 分页条数， skip：从第几条开始`
+  `tradingAddress: 鲸卡，contractAddress：资产，limit： 分页条数， skip：从第几条开始 (limit必须跟skip同时传)，不传参数是全部`
 
   - body
     ```text
-    {"query":"query{\n  tradingRecords(tradingAddress: \"0x14ca04ff85747ccfc4387866db84cc24e4643b\", contractAddress: \"0x619f889c5699394b9c5033bc85028eb4af11faa1\", limit: 10, skip: 0){\n    createdAt\n    txHash\n    blockNumber\n    tradingType\n    gas\n    erc20{\n      address\n      name\n      decimals\n      symbol\n      totalSupply\n      blockNumber\n    }\n    amount\n    from\n    to\n    tradingStatus\n    comment\n  }\n}","variables":null}
+    {"query":"{\n  tradingRecords(tradingAddress: \"0x349118dD4764b6335055582949a24A1d76DDad15\", contractAddress: \"0x349118dD4764b6335055582949a24A1d76DDad15\", limit: 10, skip: 0) {\n    txHash\n    createdAt\n    blockNumber\n    tradingType\n    tradingStatus\n    amount\n    from\n    to\n    contractAddress\n    contractSymbol\n    comment\n  }\n}\n","variables":null,"operationName":null}
     ```
     
   - response
@@ -427,41 +420,25 @@ query->tradingRecords
     ```json
     {
       "data": {
-        "tradingRecords": null
+        "tradingRecords": [
+          {
+            "txHash": "0xed2b8aba29dda5076dd40e5f0f9e8fafccd505472e3b096afb918af65bec1256",
+            "createdAt": "1557935063",
+            "blockNumber": 0,
+            "tradingType": 1,
+            "tradingStatus": 2,
+            "amount": "10005",
+            "from": "0x349118dD4764b6335055582949a24A1d76DDad15",
+            "to": "0x14CA04Ff85747DEF87d6c6C566dB84Cc24e4643b",
+            "contractAddress": "",
+            "contractSymbol": "",
+            "comment": ""
+          }
+        ]
       }
     }
     ```
-###  Q1-9.查询某条交易记录
 
-- ***API***
-
-```text
-query->tradingRecord
-```
-- ***Describe***
-
-```text
-
-```
-- ***Graphql***
-
-  - body 
-
-  ```text
-  
-  ```
-- ***Http***
-
-  - body
-    ```text
-    
-    ```
-    
-  - response
-
-    ```json
-    
-    ```
 ###  Q1-11.查询消息列表
 
 - ***API***
@@ -675,8 +652,8 @@ query->erc20s
   - body 
 
   ```text
-    query{
-      erc20s{
+    {
+      erc20s(key: ""){
         address
         blockNumber
         name
@@ -688,26 +665,46 @@ query->erc20s
   ```
 - ***Http***
 
+  - paramter
+  `key 是address,name,symbol的模糊查询，空是全部`
+
   - body
     ```text
-    {"query":"query{\n  erc20s{\n    address\n    blockNumber\n    name\n    totalSupply\n    decimals\n    symbol\n  }\n}","variables":null}
+    {"query":"{\n  erc20s(key: \"\"){\n    address\n    blockNumber\n    name\n    totalSupply\n    decimals\n    symbol\n  }\n}\n","variables":null,"operationName":null}
     ```
     
   - response
 
     ```json
     {
-      "errors": [
-        {
-          "message": "Field \"erc20s\" argument \"key\" of type \"String!\" is required but not provided.",
-          "locations": [
-            {
-              "line": 2,
-              "column": 3
-            }
-          ]
-        }
-      ]
+      "data": {
+        "erc20s": [
+          {
+            "address": "0x8CD65D4Bffe7F3638690047fb2ab3B9E52f8a31d",
+            "blockNumber": 344510,
+            "name": "LPS",
+            "totalSupply": "1000000",
+            "decimals": 2,
+            "symbol": "LPC"
+          },
+          {
+            "address": "0xCadb671eAd6aaB7B198fB04296dC928393Bb050D",
+            "blockNumber": 344510,
+            "name": "KDJDsd",
+            "totalSupply": "1000000",
+            "decimals": 2,
+            "symbol": "DFGD"
+          },
+          {
+            "address": "0xAAa53c53Bb35F93D68bdd6C6942DddaFCCcf8a59",
+            "blockNumber": 346620,
+            "name": "LLDJ",
+            "totalSupply": "1000000",
+            "decimals": 2,
+            "symbol": "DJ"
+          }
+        ]
+      }
     }
     ```
 ###  Q1-16.查询某条发布的资产
@@ -1495,11 +1492,12 @@ mutation->receiveCertificationReward
   - body 
 
   ```text
-  mutation{
-  receiveCertificationReward(toAddress: "0x14ca04ff85747def87d6c6c566db84cc24e4643b") {
-    
+    mutation{
+      receiveCertificationReward(toAddress: "0x349118dD4764b6335055582949a24A1d76DDad15", txHash: "0xed2b8aba29dda5076dd40e5f0f9e8fafccd505472e3b096afb918af65bec25bd") {
+        
       }
     }
+
   ```
 - ***Http***
 
@@ -1709,6 +1707,48 @@ mutation->resolveBussinessLicense
 
     ```json
     
+    ```
+###  M1-26.添加交易记录
+
+- ***API***
+
+```text
+mutation->addTradingRecord
+```
+- ***Describe***
+
+```text
+
+```
+- ***Graphql***
+
+  -paramter
+  `txHash: web3go发送交易返回的hash，（不能重复，测试的时候改一下），from: 发送地址，to: 接收地址，ammount：金额，comment：备注`
+
+  - body 
+
+  ```text
+  mutation{
+      addTradingRecord(txHash: "0xed2b8aba29dda5076dd40e5f0f9e8fafccd505472e3b096afb918af65bec25b4", from: "0x14CA04Ff85747DEF87d6c6C566dB84Cc24e4643b", to: "0x349118dD4764b6335055582949a24A1d76DDad15", amount: "1000", comment: "备注") {
+        
+      }
+    }
+  ```
+- ***Http***
+
+  - body
+    ```text
+    {"query":"mutation{\n  addTradingRecord(txHash: \"0xed2b8aba29dda5076dd40e5f0f9e8fafccd505472e3b096afb918af65bec25b2\", from: \"0x14CA04Ff85747DEF87d6c6C566dB84Cc24e4643b\", to: \"0x349118dD4764b6335055582949a24A1d76DDad15\", amount: \"1000\", comment: \"备注\") {\n    \n  }\n}\n","variables":null}
+    ```
+    
+  - response
+
+    ```json
+    {
+      "data": {
+        "addTradingRecord": true
+      }
+    }
     ```
 ###  P1-1.获取鲸卡信息
 
