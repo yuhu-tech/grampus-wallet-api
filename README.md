@@ -1546,32 +1546,22 @@ mutation->receiveInvitionReward
 
   ```text
     mutation{
-      receiveInvitionReward(toAddress: "0x14ca04ff85747def87d6c6c566db84cc24e4643b") {
-        
-      }
+      receiveInvitionRewards(toAddress: "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1")
     }
   ```
 - ***Http***
 
   - body
     ```text
-    {"query":"mutation{\n  receiveInvitionReward(toAddress: \"0x14ca04ff85747def87d6c6c566db84cc24e4643b\") {\n    \n  }\n}","variables":null}
+    {"query":"mutation{\n  receiveInvitionRewards(toAddress: \"0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1\")\n}","variables":null}
     ```
     
   - response
 
     ```json
     {
-      "errors": [
-        {
-          "message": "graphql: panic occurred: not implemented",
-          "path": [
-            "receiveInvitionReward"
-          ]
-        }
-      ],
       "data": {
-        "receiveInvitionReward": null
+        "receiveInvitionRewards": true
       }
     }
     ```
