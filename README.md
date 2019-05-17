@@ -452,7 +452,6 @@ query->messages
 {
   message: {
     id: ""
-    fromUserID: "消息发送者"
     toUserID: "消息接受者"
     sendAt: "发送时间"
     checkedAt: "确认时间"
@@ -461,6 +460,8 @@ query->messages
       id: ""
       createdAt: "创建时间"
       content: "内容"
+      title: "标题"
+      fromUserID: "消息发送者"
     }
   }
 }
@@ -471,20 +472,22 @@ query->messages
 
   ```text
     {
-      messages(limit: 10, skip: 0) {
+      messages(limit:10,skip:0){
         id
-        toUserID
         sendAt
         checkedAt
         checkStatus
+        toUserID
         messageContent {
           id
           createdAt
-          fromUserID
+          title
           content
+          fromUserID
         }
       }
     }
+
 
   ```
 - ***Http***
@@ -496,69 +499,73 @@ query->messages
 
   - body
     ```text
-    {"query":"{\n  messages(limit: 10, skip: 0) {\n    id\n    toUserID\n    sendAt\n    checkedAt\n    checkStatus\n    messageContent {\n      id\n      createdAt\n      fromUserID\n      content\n    }\n  }\n}\n","variables":null,"operationName":null}
+    {"query":"{\n  messages(limit:10,skip:0){\n    id\n    sendAt\n    checkedAt\n    checkStatus\n    toUserID\n    messageContent {\n      id\n      createdAt\n      title\n      content\n      fromUserID\n    }\n  }\n}\n","variables":null,"operationName":null}
     ```
     
   - response
 
     ```json
     {
-        "data": {
-            "messages": [
-                {
-                    "id": "cjvltwrhh009e0791qim6w8yq",
-                    "toUserID": "cjvls5tmq001b0791gkdkucvq",
-                    "sendAt": "2019-05-11T03:49:42.067Z",
-                    "checkedAt": null,
-                    "checkStatus": null,
-                    "messageContent": {
-                        "id": "cjvltwb5m00910791c6ikmtqw",
-                        "createdAt": "2019-05-13T03:49:36.250Z",
-                        "fromUserID": "cjvls62u7001l0791ffq9jvwl",
-                        "content": "消息内容"
-                    }
-                },
-                {
-                    "id": "cjvonjdvs02pa0791in8mvx7w",
-                    "toUserID": "cjvls5tmq001b0791gkdkucvq",
-                    "sendAt": "2019-05-13T03:14:28.875Z",
-                    "checkedAt": null,
-                    "checkStatus": null,
-                    "messageContent": {
-                        "id": "cjvltwb5m00910791c6ikmtqw",
-                        "createdAt": "2019-05-13T03:49:36.250Z",
-                        "fromUserID": "cjvls62u7001l0791ffq9jvwl",
-                        "content": "消息内容"
-                    }
-                },
-                {
-                    "id": "cjvonjw3902pu0791h263ko9t",
-                    "toUserID": "cjvls5tmq001b0791gkdkucvq",
-                    "sendAt": "2019-05-13T03:15:02.921Z",
-                    "checkedAt": "2019-05-14T03:15:06.360Z",
-                    "checkStatus": 1,
-                    "messageContent": {
-                        "id": "cjvltwb5m00910791c6ikmtqw",
-                        "createdAt": "2019-05-13T03:49:36.250Z",
-                        "fromUserID": "cjvls62u7001l0791ffq9jvwl",
-                        "content": "消息内容"
-                    }
-                },
-                {
-                    "id": "cjvonk9ou02q70791zexf7kr4",
-                    "toUserID": "cjvls5tmq001b0791gkdkucvq",
-                    "sendAt": "2019-05-05T03:15:21.225Z",
-                    "checkedAt": null,
-                    "checkStatus": 0,
-                    "messageContent": {
-                        "id": "cjvltwb5m00910791c6ikmtqw",
-                        "createdAt": "2019-05-13T03:49:36.250Z",
-                        "fromUserID": "cjvls62u7001l0791ffq9jvwl",
-                        "content": "消息内容"
-                    }
-                }
-            ]
-        }
+      "data": {
+        "messages": [
+          {
+            "id": "cjvltwrhh009e0791qim6w8yq",
+            "sendAt": "1557546582",
+            "checkedAt": null,
+            "checkStatus": 0,
+            "toUserID": "cjvls5tmq001b0791gkdkucvq",
+            "messageContent": {
+              "id": "cjvltwb5m00910791c6ikmtqw",
+              "createdAt": "1557719376",
+              "title": "系统消息",
+              "content": "消息内容",
+              "fromUserID": "cjvls62u7001l0791ffq9jvwl"
+            }
+          },
+          {
+            "id": "cjvonjdvs02pa0791in8mvx7w",
+            "sendAt": "1557717268",
+            "checkedAt": null,
+            "checkStatus": 0,
+            "toUserID": "cjvls5tmq001b0791gkdkucvq",
+            "messageContent": {
+              "id": "cjvltwb5m00910791c6ikmtqw",
+              "createdAt": "1557719376",
+              "title": "系统消息",
+              "content": "消息内容",
+              "fromUserID": "cjvls62u7001l0791ffq9jvwl"
+            }
+          },
+          {
+            "id": "cjvonjw3902pu0791h263ko9t",
+            "sendAt": "1557717302",
+            "checkedAt": "1557803706",
+            "checkStatus": 1,
+            "toUserID": "cjvls5tmq001b0791gkdkucvq",
+            "messageContent": {
+              "id": "cjvltwb5m00910791c6ikmtqw",
+              "createdAt": "1557719376",
+              "title": "系统消息",
+              "content": "消息内容",
+              "fromUserID": "cjvls62u7001l0791ffq9jvwl"
+            }
+          },
+          {
+            "id": "cjvonk9ou02q70791zexf7kr4",
+            "sendAt": "1557026121",
+            "checkedAt": null,
+            "checkStatus": 0,
+            "toUserID": "cjvls5tmq001b0791gkdkucvq",
+            "messageContent": {
+              "id": "cjvltwb5m00910791c6ikmtqw",
+              "createdAt": "1557719376",
+              "title": "系统消息",
+              "content": "消息内容",
+              "fromUserID": "cjvls62u7001l0791ffq9jvwl"
+            }
+          }
+        ]
+      }
     }
     ```
 ###  Q1-12.查询某条消息
