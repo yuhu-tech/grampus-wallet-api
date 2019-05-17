@@ -390,8 +390,9 @@ query->tradingRecords
 
   ```text
     {
-      tradingRecords(tradingAddress: "0x349118dD4764b6335055582949a24A1d76DDad15", contractAddress: "0x349118dD4764b6335055582949a24A1d76DDad15", limit: 10, skip: 0) {
+      tradingRecords(tradingAddress: "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1", contractAddress: "", limit: 10, skip: 0) {
         txHash
+        createdAtGroup
         createdAt
         blockNumber
         tradingType
@@ -412,7 +413,7 @@ query->tradingRecords
 
   - body
     ```text
-    {"query":"{\n    tradingRecords(tradingAddress: \"0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1\", contractAddress: \"\", limit: 10, skip: 0) {\n      txHash\n      createdAt\n      blockNumber\n      tradingType\n      tradingStatus\n      amount\n      from\n      to\n      contractAddress\n      contractSymbol\n      comment\n    }\n  }","variables":null,"operationName":null}
+    {"query":"{\n  tradingRecords(tradingAddress: \"0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1\", contractAddress: \"\", limit: 10, skip: 0) {\n    txHash\n    createdAtGroup\n    createdAt\n    blockNumber\n    tradingType\n    tradingStatus\n    amount\n    from\n    to\n    contractAddress\n    contractSymbol\n    comment\n  }\n}\n","variables":null,"operationName":null}
     ```
     
   - response
@@ -422,14 +423,113 @@ query->tradingRecords
       "data": {
         "tradingRecords": [
           {
-            "txHash": "0xed2b8aba29dda5076dd40e5f0f9e8fafccd505472e3b096afb918af65bec1256",
-            "createdAt": "1557935063",
-            "blockNumber": 0,
-            "tradingType": 1,
-            "tradingStatus": 2,
-            "amount": "10005",
-            "from": "0x349118dD4764b6335055582949a24A1d76DDad15",
-            "to": "0x14CA04Ff85747DEF87d6c6C566dB84Cc24e4643b",
+            "txHash": "0x05cea81ccc991b7bcba88c32a50cc732b2d9e0904317a1c97ce1251ade894e6f",
+            "createdAtGroup": "1556668800",
+            "createdAt": "1558084883",
+            "blockNumber": 442156,
+            "tradingType": 2,
+            "tradingStatus": 0,
+            "amount": "1000000000000000000",
+            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
+            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
+            "contractAddress": "",
+            "contractSymbol": "",
+            "comment": ""
+          },
+          {
+            "txHash": "0x208aadde37a19c2fcd256db26a67ac0b4213e125e7be5c2990fe8e8ef9378bcf",
+            "createdAtGroup": "1556668800",
+            "createdAt": "1558074204",
+            "blockNumber": 431477,
+            "tradingType": 2,
+            "tradingStatus": 0,
+            "amount": "100",
+            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
+            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
+            "contractAddress": "",
+            "contractSymbol": "",
+            "comment": ""
+          },
+          {
+            "txHash": "0x23312a965f63a1a45345a27d4a5596a1b9ec99c2fa6e20636b493f82cc8e725d",
+            "createdAtGroup": "1556668800",
+            "createdAt": "1558074311",
+            "blockNumber": 431584,
+            "tradingType": 2,
+            "tradingStatus": 0,
+            "amount": "100000",
+            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
+            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
+            "contractAddress": "",
+            "contractSymbol": "",
+            "comment": ""
+          },
+          {
+            "txHash": "0x5b5c6289cd616568bb6e26aba69de9aa3797fde663d4fe9c5a537e32c08d58d8",
+            "createdAtGroup": "1556668800",
+            "createdAt": "1558083925",
+            "blockNumber": 441198,
+            "tradingType": 2,
+            "tradingStatus": 0,
+            "amount": "2000000000000000000",
+            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
+            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
+            "contractAddress": "",
+            "contractSymbol": "",
+            "comment": ""
+          },
+          {
+            "txHash": "0x607f6363e70a0ddbeefaf48798e0857f0dadeedd62d6411e8a3670c0d4b67f21",
+            "createdAtGroup": "1556668800",
+            "createdAt": "1558074654",
+            "blockNumber": 431927,
+            "tradingType": 2,
+            "tradingStatus": 0,
+            "amount": "1000000000000000000",
+            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
+            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
+            "contractAddress": "",
+            "contractSymbol": "",
+            "comment": ""
+          },
+          {
+            "txHash": "0x76c9b34ef5bb67fc911d6c635792ac43b2abbd7010e7ca6f79b4f8453a2040ea",
+            "createdAtGroup": "1556668800",
+            "createdAt": "1558076310",
+            "blockNumber": 433583,
+            "tradingType": 2,
+            "tradingStatus": 0,
+            "amount": "1000000000000000000",
+            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
+            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
+            "contractAddress": "",
+            "contractSymbol": "",
+            "comment": ""
+          },
+          {
+            "txHash": "0xb13bb99052011a432fbf3ca273f63a43e77156d5b2327d1472b7abd6602164f8",
+            "createdAtGroup": "1556668800",
+            "createdAt": "1558083986",
+            "blockNumber": 441259,
+            "tradingType": 2,
+            "tradingStatus": 0,
+            "amount": "2000000000000000000",
+            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
+            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
+            "contractAddress": "",
+            "contractSymbol": "",
+            "comment": ""
+          },
+          {
+            "txHash": "0xef1b69151eb207bfb888ef3ee5e4c2944c108e7de1cf0a679c729864c6f9ddfa",
+            "createdAtGroup": "1556668800",
+            "createdAt": "1558074055",
+            "blockNumber": 431328,
+            "tradingType": 2,
+            "tradingStatus": 0,
+            "amount": "100",
+            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
+            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
             "contractAddress": "",
             "contractSymbol": "",
             "comment": ""
