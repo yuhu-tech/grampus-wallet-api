@@ -1508,9 +1508,7 @@ mutation->receiveCertificationReward
 
   ```text
     mutation{
-      receiveCertificationReward(toAddress: "0x349118dD4764b6335055582949a24A1d76DDad15", txHash: "0xed2b8aba29dda5076dd40e5f0f9e8fafccd505472e3b096afb918af65bec25bd") {
-        
-      }
+      receiveCertificationReward(toAddress: "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1")
     }
 
   ```
@@ -1518,23 +1516,15 @@ mutation->receiveCertificationReward
 
   - body
     ```text
-    {"query":"mutation{\n  receiveCertificationReward(toAddress: \"0x14ca04ff85747def87d6c6c566db84cc24e4643b\") {\n    \n  }\n}","variables":null}
+    {"query":"mutation{\n  receiveCertificationReward(toAddress: \"0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1\")\n}","variables":null}
     ```
     
   - response
 
     ```json
     {
-      "errors": [
-        {
-          "message": "graphql: panic occurred: not implemented",
-          "path": [
-            "receiveCertificationReward"
-          ]
-        }
-      ],
       "data": {
-        "receiveCertificationReward": null
+        "receiveCertificationReward": false
       }
     }
     ```
