@@ -600,14 +600,18 @@ query->message
 
   ```text
    {
-      message(id: "cjvonjw3902pu0791h263ko9t"){
+      message(id: "cjvltwrhh009e0791qim6w8yq") {
         id
         sendAt
         checkedAt
         checkStatus
         toUserID
-        messageContent {
+        messageContent{
           id
+          createdAt
+          title
+          content
+          fromUserID
         }
       }
     }
@@ -621,7 +625,7 @@ query->message
 
   - body
     ```text
-    {"query":"{\n  message(id: \"cjvonjw3902pu0791h263ko9t\"){\n    id\n    sendAt\n    checkedAt\n    checkStatus\n    toUserID\n    messageContent {\n      id\n    }\n  }\n}\n","variables":null,"operationName":null}
+    {"query":"{\n  message(id: \"cjvltwrhh009e0791qim6w8yq\") {\n    id\n    sendAt\n    checkedAt\n    checkStatus\n    toUserID\n    messageContent{\n      id\n      createdAt\n      title\n      content\n      fromUserID\n    }\n  }\n}\n","variables":null,"operationName":null}
     ```
     
   - response
@@ -630,13 +634,17 @@ query->message
     {
       "data": {
         "message": {
-          "id": "cjvonjw3902pu0791h263ko9t",
-          "sendAt": "2019-05-13T03:15:02.921Z",
-          "checkedAt": "2019-05-14T03:15:06.360Z",
-          "checkStatus": 1,
+          "id": "cjvltwrhh009e0791qim6w8yq",
+          "sendAt": "1557546582",
+          "checkedAt": null,
+          "checkStatus": 0,
           "toUserID": "cjvls5tmq001b0791gkdkucvq",
           "messageContent": {
-            "id": "cjvltwb5m00910791c6ikmtqw"
+            "id": "cjvltwb5m00910791c6ikmtqw",
+            "createdAt": "1557719376",
+            "title": "系统消息",
+            "content": "消息内容",
+            "fromUserID": "cjvls62u7001l0791ffq9jvwl"
           }
         }
       }
