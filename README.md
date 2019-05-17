@@ -412,7 +412,7 @@ query->tradingRecords
 
   - body
     ```text
-    {"query":"{\n  tradingRecords(tradingAddress: \"0x349118dD4764b6335055582949a24A1d76DDad15\", contractAddress: \"0x349118dD4764b6335055582949a24A1d76DDad15\", limit: 10, skip: 0) {\n    txHash\n    createdAt\n    blockNumber\n    tradingType\n    tradingStatus\n    amount\n    from\n    to\n    contractAddress\n    contractSymbol\n    comment\n  }\n}\n","variables":null,"operationName":null}
+    {"query":"{\n    tradingRecords(tradingAddress: \"0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1\", contractAddress: \"\", limit: 10, skip: 0) {\n      txHash\n      createdAt\n      blockNumber\n      tradingType\n      tradingStatus\n      amount\n      from\n      to\n      contractAddress\n      contractSymbol\n      comment\n    }\n  }","variables":null,"operationName":null}
     ```
     
   - response
