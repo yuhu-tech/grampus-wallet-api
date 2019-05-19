@@ -391,18 +391,26 @@ query->tradingRecords
   ```text
     {
       tradingRecords(tradingAddress: "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1", contractAddress: "", limit: 10, skip: 0) {
-        txHash
-        createdAtGroup
-        createdAt
-        blockNumber
-        tradingType
-        tradingStatus
-        amount
-        from
-        to
-        contractAddress
-        contractSymbol
-        comment
+        totalCount
+        records {
+          txHash
+          createdAt
+          createdAtGroup
+          blockNumber
+          tradingType
+          tradingStatus
+          amount
+          amountDecimals
+          amountDecimalsClip
+          symbol
+          decimals
+          from
+          to
+          otherAddress
+          contractAddress
+          contractName
+          comment
+        }
       }
     }
   ```
@@ -413,7 +421,7 @@ query->tradingRecords
 
   - body
     ```text
-    {"query":"{\n  tradingRecords(tradingAddress: \"0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1\", contractAddress: \"\", limit: 10, skip: 0) {\n    txHash\n    createdAtGroup\n    createdAt\n    blockNumber\n    tradingType\n    tradingStatus\n    amount\n    from\n    to\n    contractAddress\n    contractSymbol\n    comment\n  }\n}\n","variables":null,"operationName":null}
+    {"query":"{\n  tradingRecords(tradingAddress: \"0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1\", contractAddress: \"\", limit: 10, skip: 0) {\n    totalCount\n    records {\n      txHash\n      createdAt\n      createdAtGroup\n      blockNumber\n      tradingType\n      tradingStatus\n      amount\n      amountDecimals\n      amountDecimalsClip\n      symbol\n      decimals\n      from\n      to\n      otherAddress\n      contractAddress\n      contractName\n      comment\n    }\n  }\n}\n","variables":null,"operationName":null}
     ```
     
   - response
@@ -421,121 +429,29 @@ query->tradingRecords
     ```json
     {
       "data": {
-        "tradingRecords": [
-          {
-            "txHash": "0x05cea81ccc991b7bcba88c32a50cc732b2d9e0904317a1c97ce1251ade894e6f",
-            "createdAtGroup": "1556668800",
-            "createdAt": "1558084883",
-            "blockNumber": 442156,
-            "tradingType": 2,
-            "tradingStatus": 0,
-            "amount": "1000000000000000000",
-            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
-            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
-            "contractAddress": "",
-            "contractSymbol": "",
-            "comment": ""
-          },
-          {
-            "txHash": "0x208aadde37a19c2fcd256db26a67ac0b4213e125e7be5c2990fe8e8ef9378bcf",
-            "createdAtGroup": "1556668800",
-            "createdAt": "1558074204",
-            "blockNumber": 431477,
-            "tradingType": 2,
-            "tradingStatus": 0,
-            "amount": "100",
-            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
-            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
-            "contractAddress": "",
-            "contractSymbol": "",
-            "comment": ""
-          },
-          {
-            "txHash": "0x23312a965f63a1a45345a27d4a5596a1b9ec99c2fa6e20636b493f82cc8e725d",
-            "createdAtGroup": "1556668800",
-            "createdAt": "1558074311",
-            "blockNumber": 431584,
-            "tradingType": 2,
-            "tradingStatus": 0,
-            "amount": "100000",
-            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
-            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
-            "contractAddress": "",
-            "contractSymbol": "",
-            "comment": ""
-          },
-          {
-            "txHash": "0x5b5c6289cd616568bb6e26aba69de9aa3797fde663d4fe9c5a537e32c08d58d8",
-            "createdAtGroup": "1556668800",
-            "createdAt": "1558083925",
-            "blockNumber": 441198,
-            "tradingType": 2,
-            "tradingStatus": 0,
-            "amount": "2000000000000000000",
-            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
-            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
-            "contractAddress": "",
-            "contractSymbol": "",
-            "comment": ""
-          },
-          {
-            "txHash": "0x607f6363e70a0ddbeefaf48798e0857f0dadeedd62d6411e8a3670c0d4b67f21",
-            "createdAtGroup": "1556668800",
-            "createdAt": "1558074654",
-            "blockNumber": 431927,
-            "tradingType": 2,
-            "tradingStatus": 0,
-            "amount": "1000000000000000000",
-            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
-            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
-            "contractAddress": "",
-            "contractSymbol": "",
-            "comment": ""
-          },
-          {
-            "txHash": "0x76c9b34ef5bb67fc911d6c635792ac43b2abbd7010e7ca6f79b4f8453a2040ea",
-            "createdAtGroup": "1556668800",
-            "createdAt": "1558076310",
-            "blockNumber": 433583,
-            "tradingType": 2,
-            "tradingStatus": 0,
-            "amount": "1000000000000000000",
-            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
-            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
-            "contractAddress": "",
-            "contractSymbol": "",
-            "comment": ""
-          },
-          {
-            "txHash": "0xb13bb99052011a432fbf3ca273f63a43e77156d5b2327d1472b7abd6602164f8",
-            "createdAtGroup": "1556668800",
-            "createdAt": "1558083986",
-            "blockNumber": 441259,
-            "tradingType": 2,
-            "tradingStatus": 0,
-            "amount": "2000000000000000000",
-            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
-            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
-            "contractAddress": "",
-            "contractSymbol": "",
-            "comment": ""
-          },
-          {
-            "txHash": "0xef1b69151eb207bfb888ef3ee5e4c2944c108e7de1cf0a679c729864c6f9ddfa",
-            "createdAtGroup": "1556668800",
-            "createdAt": "1558074055",
-            "blockNumber": 431328,
-            "tradingType": 2,
-            "tradingStatus": 0,
-            "amount": "100",
-            "from": "0x413621Ee1152D145B22856b86284a0a8Abb5544C",
-            "to": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
-            "contractAddress": "",
-            "contractSymbol": "",
-            "comment": ""
-          }
-        ]
-      }
+        "tradingRecords": {
+          "totalCount": 26,
+          "records": [
+            {
+              "txHash": "0x3f4e84dd289abc82782217aed8008e2ffe8bbd8c44eef66f56db91fc6eed69d2",
+              "createdAt": "1558252620",
+              "createdAtGroup": "1556668800",
+              "blockNumber": 483605,
+              "tradingType": 1,
+              "tradingStatus": 1,
+              "amount": "10000",
+              "amountDecimals": "+1",
+              "amountDecimalsClip": "+1",
+              "symbol": "WBC",
+              "decimals": 4,
+              "from": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
+              "to": "0x5EA4e1B7B750E3f5a3beE6913Fa469455A590B75",
+              "otherAddress": "0x5EA4e1B7B750E3f5a3beE6913Fa469455A590B75",
+              "contractAddress": "0x3666436466343139383832373532303338343936",
+              "contractName": "WBJD",
+              "comment": ""
+            }
+        }
     }
     ```
 
@@ -822,7 +738,58 @@ query->erc20s
       }
     }
     ```
-###  Q1-16.查询某条发布的资产
+###  Q1-16.各种文案
+
+- ***API***
+
+```text
+query->assets
+```
+- ***Describe***
+
+```text
+```
+- ***Graphql***
+
+  - body 
+
+  ```text
+   {
+      document(index: 3){
+        title
+        paragraphs
+      }
+    }
+  ```
+- ***Http***
+
+  - parameter
+    ```text
+    index: 文案序号, 1.隐私协议 2.如何导入鲸卡 3.邀请文案， 4.奖励规则 
+    ```
+
+  - body
+    ```text
+    {"query":"{\n  document(index: 3){\n    title\n    paragraphs\n  }\n}\n","variables":null,"operationName":null}
+    ```
+    
+  - response
+
+    ```json
+    {
+      "data": {
+        "document": {
+          "title": "邀请文案",
+          "paragraphs": [
+            "邀请分享文案",
+            "快来玩鲸矿app吧，做自己资产的主人.现已支持餐饮、汽车、原创作品等多种资产.现在就开始使用吧！",
+            "http：//app下载地址"
+          ]
+        }
+      }
+    }
+    ```
+###  Q1-18.查询某条发布的资产
 
 - ***API***
 
