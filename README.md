@@ -1,6 +1,6 @@
 ## Grampus wallet App API documnet
 
-`url: http://119.3.43.136:8080/query`
+`url: http://119.3.43.136:8080/query，正式发布需要替换成https://assets.yuhu.tech/query`
 
 `method: POST`
 
