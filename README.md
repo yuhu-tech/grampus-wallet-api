@@ -402,6 +402,9 @@ query->tradingRecords
           amount
           amountDecimals
           amountDecimalsClip
+          gas
+          gasDecimals
+          gasDecimalsClip
           symbol
           decimals
           from
@@ -430,28 +433,33 @@ query->tradingRecords
     {
       "data": {
         "tradingRecords": {
-          "totalCount": 26,
+          "totalCount": 55,
           "records": [
             {
-              "txHash": "0x3f4e84dd289abc82782217aed8008e2ffe8bbd8c44eef66f56db91fc6eed69d2",
-              "createdAt": "1558252620",
+              "txHash": "0xf116111b661659318b04ce9908eca2d4fd320b9d213a03f9417ca8864a123126",
+              "createdAt": "1558346473",
               "createdAtGroup": "1556668800",
-              "blockNumber": 483605,
+              "blockNumber": 0,
               "tradingType": 1,
               "tradingStatus": 1,
-              "amount": "10000",
-              "amountDecimals": "+1",
-              "amountDecimalsClip": "+1",
-              "symbol": "WBC",
-              "decimals": 4,
+              "amount": "10000000111",
+              "amountDecimals": "-0.000000010000000111",
+              "amountDecimalsClip": "-0",
+              "gas": "0",
+              "gasDecimals": "0",
+              "gasDecimalsClip": "0",
+              "symbol": "GA",
+              "decimals": 18,
               "from": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
-              "to": "0x5EA4e1B7B750E3f5a3beE6913Fa469455A590B75",
-              "otherAddress": "0x5EA4e1B7B750E3f5a3beE6913Fa469455A590B75",
-              "contractAddress": "0x3666436466343139383832373532303338343936",
-              "contractName": "WBJD",
+              "to": "0x1B5330f7614Ea86132A97fc9994Bd32Eb6Da72f3",
+              "otherAddress": "0x1B5330f7614Ea86132A97fc9994Bd32Eb6Da72f3",
+              "contractAddress": "",
+              "contractName": "",
               "comment": ""
             }
+          ]
         }
+      }
     }
     ```
 
@@ -1790,17 +1798,15 @@ mutation->addTradingRecord
   - body 
 
   ```text
-  mutation{
-      addTradingRecord(txHash: "0xed2b8aba29dda5076dd40e5f0f9e8fafccd505472e3b096afb918af65bec25b4", from: "0x14CA04Ff85747DEF87d6c6C566dB84Cc24e4643b", to: "0x349118dD4764b6335055582949a24A1d76DDad15", amount: "1000", comment: "备注") {
-        
-      }
+    mutation {
+      addTradingRecord(txHash: "0xed2b8aba29dda5076dd40e5f0f9e8fafccd505472e3b096afb918af65bec25b4", from: "0x14CA04Ff85747DEF87d6c6C566dB84Cc24e4643b", to: "0x349118dD4764b6335055582949a24A1d76DDad15", amount: "1000", comment: "备注", txid: "")
     }
   ```
 - ***Http***
 
   - body
     ```text
-    {"query":"mutation{\n  addTradingRecord(txHash: \"0xed2b8aba29dda5076dd40e5f0f9e8fafccd505472e3b096afb918af65bec25b2\", from: \"0x14CA04Ff85747DEF87d6c6C566dB84Cc24e4643b\", to: \"0x349118dD4764b6335055582949a24A1d76DDad15\", amount: \"1000\", comment: \"备注\") {\n    \n  }\n}\n","variables":null}
+    {"query":"mutation {\n  addTradingRecord(txHash: \"0xed2b8aba29dda5076dd40e5f0f9e8fafccd505472e3b096afb918af65bec25b4\", from: \"0x14CA04Ff85747DEF87d6c6C566dB84Cc24e4643b\", to: \"0x349118dD4764b6335055582949a24A1d76DDad15\", amount: \"1000\", comment: \"备注\", txid: \"\")\n}\n","variables":null}
     ```
     
   - response
