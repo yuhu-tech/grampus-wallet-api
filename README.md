@@ -424,7 +424,7 @@ query->tradingRecords
 
   - body
     ```text
-    {"query":"{\n  tradingRecords(tradingAddress: \"0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1\", contractAddress: \"\", limit: 10, skip: 0) {\n    totalCount\n    records {\n      txHash\n      createdAt\n      createdAtGroup\n      blockNumber\n      tradingType\n      tradingStatus\n      amount\n      amountDecimals\n      amountDecimalsClip\n      symbol\n      decimals\n      from\n      to\n      otherAddress\n      contractAddress\n      contractName\n      comment\n    }\n  }\n}\n","variables":null,"operationName":null}
+    {"query":"{\n  tradingRecords(tradingAddress: \"0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1\", contractAddress: \"\", limit: 1, skip: 0) {\n    totalCount\n    records {\n      txHash\n      createdAt\n      createdAtGroup\n      blockNumber\n      tradingType\n      tradingStatus\n      amount\n      amountDecimals\n      amountDecimalsClip\n      gas\n      gasDecimals\n      gasDecimalsClip\n      symbol\n      decimals\n      from\n      to\n      otherAddress\n      contractAddress\n      contractName\n      comment\n    }\n  }\n}\n","variables":null,"operationName":null}
     ```
     
   - response
