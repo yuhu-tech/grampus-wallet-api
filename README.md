@@ -2107,18 +2107,19 @@ query->Q1-1->S5-9
   - body 
 
   ```text
-    query{
-      user{
+    {
+      user {
+        id
         phoneNumber
-        certificationStatuses{
-          personalCertificationInfo{
+        certificationStatuses {
+          personalCertificationInfo {
             name
           }
           certType
           certStatus
         }
       }
-      messages{
+      messages {
         id
         checkStatus
       }
@@ -2128,7 +2129,7 @@ query->Q1-1->S5-9
 
   - body
     ```text
-    {"query":"query{\n  user{\n    phoneNumber\n    certificationStatuses{\n      personalCertificationInfo{\n        name\n      }\n      certType\n      certStatus\n    }\n  }\n  messages{\n    id\n    checkStatus\n  }\n}","variables":null}
+    {"query":"{\n  user {\n    id\n    phoneNumber\n    certificationStatuses {\n      personalCertificationInfo {\n        name\n      }\n      certType\n      certStatus\n    }\n  }\n  messages {\n    id\n    checkStatus\n  }\n}\n","variables":null,"operationName":null}
     ```
     
   - response
@@ -2137,11 +2138,12 @@ query->Q1-1->S5-9
     {
       "data": {
         "user": {
+          "id": "cjvls5tmq001b0791gkdkucvq",
           "phoneNumber": "18721341306",
           "certificationStatuses": [
             {
               "personalCertificationInfo": {
-                "name": "张三"
+                "name": "胡佳辉"
               },
               "certType": 1,
               "certStatus": 1
@@ -2150,19 +2152,23 @@ query->Q1-1->S5-9
         },
         "messages": [
           {
-            "id": "cjvltwrhh009e0791qim6w8yq",
+            "id": "cjvw46hqe0kwl0791kvfvv7jq",
             "checkStatus": 0
           },
           {
-            "id": "cjvonjdvs02pa0791in8mvx7w",
+            "id": "cjvw46srw0kx20791m91g9ktn",
             "checkStatus": 0
           },
           {
-            "id": "cjvonjw3902pu0791h263ko9t",
-            "checkStatus": 1
+            "id": "cjvw48nnb0kxq07918x00w05r",
+            "checkStatus": 0
           },
           {
-            "id": "cjvonk9ou02q70791zexf7kr4",
+            "id": "cjvw49leu0kys07913vg2a6iv",
+            "checkStatus": null
+          },
+          {
+            "id": "cjvw4akgi0kzx0791pmgtcteo",
             "checkStatus": 0
           }
         ]
