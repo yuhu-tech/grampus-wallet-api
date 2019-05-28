@@ -462,6 +462,85 @@ query->tradingRecords
       }
     }
     ```
+###  Q1-9.查询某条交易记录
+
+- ***API***
+
+```text
+query->tradingRecord
+```
+- ***Describe***
+
+```text
+
+```
+- ***Graphql***
+
+  - body 
+
+  ```text
+    query{
+      tradingRecord(txHash: "0xce9624737090cad424964af0b2b2a7ea97725f5d5746d26d310007b3450c47d8", tradingAddress: "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1") {
+        txHash
+        createdAt
+        createdAtGroup
+        blockNumber
+        tradingStatus
+        tradingType
+        amount
+        amountDecimals
+        amountDecimalsClip
+        gas
+        gasDecimals
+        gasDecimalsClip
+        symbol
+        decimals
+        from
+        to
+        otherAddress
+        contractAddress
+        contractName
+        comment
+      }
+    }
+  ```
+- ***Http***
+
+  - body
+    ```text
+    {"query":"query{\n  tradingRecord(txHash: \"0xce9624737090cad424964af0b2b2a7ea97725f5d5746d26d310007b3450c47d8\", tradingAddress: \"0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1\") {\n    txHash\n    createdAt\n    createdAtGroup\n    blockNumber\n    tradingStatus\n    tradingType\n    amount\n    amountDecimals\n    amountDecimalsClip\n    gas\n    gasDecimals\n    gasDecimalsClip\n    symbol\n    decimals\n    from\n    to\n    otherAddress\n    contractAddress\n    contractName\n    comment\n  }\n}","variables":null}
+    ```
+    
+  - response
+
+    ```json
+    {
+      "data": {
+        "tradingRecord": {
+          "txHash": "0xce9624737090cad424964af0b2b2a7ea97725f5d5746d26d310007b3450c47d8",
+          "createdAt": "1559012079",
+          "createdAtGroup": "1556668800",
+          "blockNumber": 1234869,
+          "tradingStatus": 1,
+          "tradingType": 1,
+          "amount": "20000000000000000000",
+          "amountDecimals": "-20.000000000000000000",
+          "amountDecimalsClip": "-20",
+          "gas": "731500000000000",
+          "gasDecimals": "0.000731500000000000",
+          "gasDecimalsClip": "0.0007",
+          "symbol": "TTR",
+          "decimals": 18,
+          "from": "0x941c69B23CeF5f5021b5966f4ba85fE6Bf9A58E1",
+          "to": "0x413621ee1152d145b22856b86284a0a8abb5544c",
+          "otherAddress": "0x413621ee1152d145b22856b86284a0a8abb5544c",
+          "contractAddress": "0x18c99c18B47ca8eBC65604B40bEb9eBDc21Dbb95",
+          "contractName": "ttrr",
+          "comment": ""
+        }
+      }
+    }
+    ```
 
 ###  Q1-11.查询消息列表
 
@@ -1793,20 +1872,28 @@ mutation->addTradingRecord
 - ***Graphql***
 
   -paramter
-  `txHash: web3go发送交易返回的hash，（不能重复，测试的时候改一下），from: 发送地址，to: 接收地址，ammount：金额，comment：备注`
+  `txHash: web3go发送交易返回的hash，（不能重复，测试的时候改一下），from: 发送地址，to: 接收地址，ammount：金额，comment：备注, contractAddress: 合约地址，txid：扫描二维码转账txid`
 
   - body 
 
   ```text
-    mutation {
-      addTradingRecord(txHash: "0xed2b8aba29dda5076dd40e5f0f9e8fafccd505472e3b096afb918af65bec25b4", from: "0x14CA04Ff85747DEF87d6c6C566dB84Cc24e4643b", to: "0x349118dD4764b6335055582949a24A1d76DDad15", amount: "1000", comment: "备注", txid: "")
+    mutation{
+      addTradingRecord(
+        txHash: "0xe02b498a37d82696f8f51711dd4577563c141dc95c6ab4f38fd79ff87461a982",
+        from: "0x1Faa504E850eb32C6f4833519378d3cC17aaD07b",
+        to: "0xb982869D20986422CC2d11499C826d1C5C535C3B",
+        amount: "100",
+        comment: "22",
+        txid: "06d249bb-5c48-4ed9-86e5-c560f9d654e2",
+        contractAddress: "0x1Faa504E850eb32C6f4833519378d3cC17aaD07b"
+      )
     }
   ```
 - ***Http***
 
   - body
     ```text
-    {"query":"mutation {\n  addTradingRecord(txHash: \"0xed2b8aba29dda5076dd40e5f0f9e8fafccd505472e3b096afb918af65bec25b4\", from: \"0x14CA04Ff85747DEF87d6c6C566dB84Cc24e4643b\", to: \"0x349118dD4764b6335055582949a24A1d76DDad15\", amount: \"1000\", comment: \"备注\", txid: \"\")\n}\n","variables":null}
+    {"query":"mutation{\n  addTradingRecord(\n    txHash: \"0xe02b498a37d82696f8f51711dd4577562c141dc95c6ab4f38fd79ff87461a982\",\n    from: \"0x1Faa504E850eb32C6f4833519378d3cC17aaD07b\",\n    to: \"0xb982869D20986422CC2d11499C826d1C5C535C3B\",\n    amount: \"100\",\n    comment: \"22\",\n    txid: \"06d249bb-5c48-4ed9-86e5-c560f9d654e2\",\n    contractAddress: \"0x1Faa504E850eb32C6f4833519378d3cC17aaD07b\"\n  )\n}","variables":null}
     ```
     
   - response
