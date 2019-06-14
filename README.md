@@ -2147,11 +2147,11 @@ query->Q1-1->S2-10
   - body 
 
   ```text
-    query{
-      user{
-        certificationRewards{
+    {
+      user {
+        invitionRewards {
           id
-          rewardContent{
+          rewardContent {
             rewardPoint
           }
         }
@@ -2162,7 +2162,7 @@ query->Q1-1->S2-10
 
   - body
     ```text
-    {"query":"query{\n  user{\n    certificationRewards{\n      id\n      rewardContent{\n        rewardPoint\n      }\n    }\n  }\n}","variables":null}
+    {"query":"{\n  user {\n    invitionRewards {\n      id\n      rewardContent {\n        rewardPoint\n      }\n    }\n  }\n}\n","variables":null,"operationName":null}
     ```
     
   - response
@@ -2171,7 +2171,7 @@ query->Q1-1->S2-10
     {
       "data": {
         "user": {
-          "certificationRewards": []
+          "invitionRewards": []
         }
       }
     }
