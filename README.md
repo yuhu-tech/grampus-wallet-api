@@ -2107,7 +2107,7 @@ query->Q1-1->S2-5
   ```text
     query{
       user{
-        CountOfInvitees
+        countOfInvitees
       }
     }
   ```
@@ -2115,7 +2115,7 @@ query->Q1-1->S2-5
 
   - body
     ```text
-    {"query":"query{\n  user{\n    CountOfInvitees\n  }\n}","variables":null}
+    {"query":"query{\n  user{\n    countOfInvitees\n  }\n}","variables":null}
     ```
     
   - response
@@ -2124,7 +2124,7 @@ query->Q1-1->S2-5
     {
       "data": {
         "user": {
-          "CountOfInvitees": 3
+          "countOfInvitees": 3
         }
       }
     }
